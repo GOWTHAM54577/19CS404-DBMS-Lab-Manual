@@ -132,6 +132,7 @@ CREATE TABLE jobs
 ```
 
 **Output:**
+![image](https://github.com/user-attachments/assets/1d8dac80-ae52-41d7-883c-f98813878067)
 
 
 **Question 2**
