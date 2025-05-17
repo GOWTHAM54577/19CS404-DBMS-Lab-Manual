@@ -37,125 +37,323 @@ HAVING condition;
 ```
 
 **Question 1**
---
--- Paste Question 1 here
 
-```sql
--- Paste your SQL code below for Question 1
+How many appointments are scheduled for each doctor?
+
+Sample table:Appointments Table
+![image](https://github.com/user-attachments/assets/e6918910-0473-4ab7-b023-7561c15f52ee)
+
+
+
+For example:
+
+##### Result
+DoctorID    TotalAppointments
+----------  -----------------
+3           3
+4           2
+6           1
+7           3
+10          1
+
+#### Code:
+```
+SELECT DoctorID, COUNT(*) AS TotalAppointments
+FROM Appointments 
+GROUP BY DoctorID;
 ```
 
 **Output:**
+![image](https://github.com/user-attachments/assets/8a883455-e279-4e9b-b679-c29e0c3b0549)
 
-![Output1](output.png)
 
 **Question 2**
----
--- Paste Question 2 here
 
-```sql
--- Paste your SQL code below for Question 2
+How many medical records does each doctor have?
+
+Sample table:MedicalRecords Table
+
+![image](https://github.com/user-attachments/assets/0e47ad4e-e913-495c-86e2-6554ffc35ed2)
+
+
+For example:
+
+##### Result
+
+DoctorID    TotalRecords
+----------  ------------
+3           4
+5           1
+6           1
+7           1
+8           3
+
+#### Code:
+```
+SELECT DoctorID, COUNT(*) AS TotalRecords
+FROM MedicalRecords 
+GROUP BY DoctorID;
 ```
 
 **Output:**
+![image](https://github.com/user-attachments/assets/588a0db3-bbe7-4251-a321-437db94b554c)
 
-![Output2](output.png)
 
 **Question 3**
----
--- Paste Question 3 here
 
-```sql
--- Paste your SQL code below for Question 3
+How many doctors specialize in each medical specialty?
+
+Sample table:Doctors Table
+
+![image](https://github.com/user-attachments/assets/d6277d56-952d-40e2-9696-7c77bc808cc8)
+
+
+For example:
+
+##### Result
+Specialty          TotalDocto
+-----------------  ----------
+Gastroenterology   1
+Neurology          1
+Obstetrics         3
+Ophthalmology      1
+Orthopedics        1
+Pediatrics         2
+Urology            1
+
+#### Code:
+```
+SELECT Specialty, COUNT(*) AS TotalDocto
+FROM Doctors 
+GROUP BY Specialty;
 ```
 
 **Output:**
+![image](https://github.com/user-attachments/assets/99b82a47-99ef-429a-8ad5-2a4c0c8e3f94)
 
-![Output3](output.png)
 
 **Question 4**
----
--- Paste Question 4 here
 
-```sql
--- Paste your SQL code below for Question 4
+Write a SQL query to calculate total available amount of fruits that has a price greater than 0.5 . Return total Count. 
+
+Note: Inventory attribute contains amount of fruits
+
+Table: fruits
+
+name        type
+----------  ----------
+id          INTEGER
+name        TEXT
+unit        TEXT
+inventory   INTEGER
+price       REAL
+ 
+
+For example:
+
+##### Result
+total_available_amount
+----------------------
+160
+
+#### Code:
+```
+SELECT SUM(inventory) AS total_available_amount
+FROM fruits
+WHERE price>0.5;
 ```
 
-**Output:**
 
-![Output4](output.png)
+**Output:**
+![image](https://github.com/user-attachments/assets/8e107b73-87a7-45e6-a696-3d61db3e2970)
+
+
 
 **Question 5**
----
--- Paste Question 5 here
 
-```sql
--- Paste your SQL code below for Question 5
+Write a SQL query to Calculate the average email length (in characters) for people who lives in Mumbai city
+
+Table: customer
+
+name        type
+----------  ----------
+id          INTEGER
+name        TEXT   
+city        TEXT
+email       TEXT
+phone       INTEGER
+For example:
+
+##### Result
+avg_email_length_below_30
+-------------------------
+14.0
+
+#### Code:
+```
+SELECT AVG(LENGTH(email)) AS avg_email_length_below_30
+FROM customer
+WHERE city='Mumbai';
 ```
 
 **Output:**
+![image](https://github.com/user-attachments/assets/bedc0a32-6535-4bb4-b881-4a1f6e23028b)
 
-![Output5](output.png)
 
 **Question 6**
----
--- Paste Question 6 here
+Write a SQL query to find the average length of email addresses (in characters):
 
-```sql
--- Paste your SQL code below for Question 6
+Table: customer
+
+name        type
+----------  ----------
+id          INTEGER
+name        TEXT
+city        TEXT
+email       TEXT
+phone       INTEGER
+For example:
+
+##### Result
+avg_email_length
+----------------
+15.0
+
+#### Code:
+```
+SELECT AVG(LENGTH(email)) AS avg_email_length
+FROM customer;
 ```
 
 **Output:**
+![image](https://github.com/user-attachments/assets/13fba7fb-c95e-4b50-a1f9-88bf554e0160)
 
-![Output6](output.png)
+
 
 **Question 7**
----
--- Paste Question 7 here
 
-```sql
--- Paste your SQL code below for Question 7
+Write a SQL query to find  how many employees work in California?
+
+Table: employee
+
+name        type
+----------  ----------
+id          INTEGER
+name        TEXT
+age         INTEGER
+city        TEXT
+income      INTEGER
+ 
+
+For example:
+
+##### Result
+employees_in_california
+-----------------------
+2
+
+#### Code:
+```
+SELECT COUNT(*) AS employees_in_california
+FROM employee
+WHERE city='California';
 ```
 
 **Output:**
+![image](https://github.com/user-attachments/assets/e93b9588-5d1f-44d0-b12e-e178648b421a)
 
-![Output7](output.png)
 
 **Question 8**
----
--- Paste Question 8 here
 
-```sql
--- Paste your SQL code below for Question 8
+Write a SQL query to identify the cities (addresses) where the average salary is greater than Rs. 5000, as per the "customer1" table.
+
+Sample table: customer1
+
+![image](https://github.com/user-attachments/assets/ef0dde33-d686-43b6-81a4-bfaa8679825f)
+
+
+For example:
+
+##### Result
+address     AVG(salary)
+----------  -----------
+Bhopal      8500.0
+Indore      10000.0
+Mumbai      6500.0
+
+#### Code:
+```
+SELECT address, AVG(salary)
+FROM customer1
+GROUP BY address
+HAVING AVG(salary)>5000;
 ```
 
 **Output:**
+![image](https://github.com/user-attachments/assets/66c0730f-c952-4076-b956-bb82bd29973e)
 
-![Output8](output.png)
 
 **Question 9**
----
--- Paste Question 9 here
 
-```sql
--- Paste your SQL code below for Question 9
+Write the SQL query that accomplishes the grouping of data by age, calculates the average income for each age group, and includes only those age groups where the average income falls between 300,000 and 500,000.
+
+Sample table: employee
+
+![image](https://github.com/user-attachments/assets/d355e193-eafd-4eec-97d3-83c92aae27bc)
+
+
+For example:
+
+##### Result
+age         AVG(income)
+----------  -----------
+45          450000.0
+
+#### Code:
+```
+SELECT age, AVG(income)
+FROM employee
+GROUP BY age
+HAVING AVG(income) BETWEEN 300000 AND 500000;
 ```
 
 **Output:**
+![image](https://github.com/user-attachments/assets/6614da10-6175-4f94-a921-44d10d629954)
 
-![Output9](output.png)
 
 **Question 10**
----
--- Paste Question 10 here
 
-```sql
--- Paste your SQL code below for Question 10
+Write the SQL query that achieves the selection of product names and the maximum price for each category from the "products" table, and includes only those products where the maximum price is greater than 15.
+
+Sample table: products
+
+![image](https://github.com/user-attachments/assets/8d178cfd-3be4-480a-a341-e6dd52930825)
+
+
+For example:
+
+##### Result
+category_id  product_name  Price
+-----------  ------------  ----------
+1            Orange        15.5
+2            Monitor       25
+
+#### Code:
+```
+SELECT category_id, product_name, MAX(price) AS Price
+FROM products
+GROUP BY category_id
+HAVING MAX(price)>15;
 ```
 
 **Output:**
+![image](https://github.com/user-attachments/assets/7277628e-b887-4496-b992-233d559a45b2)
 
-![Output10](output.png)
 
 
 ## RESULT
 Thus, the SQL queries to implement aggregate functions, GROUP BY, and HAVING clause have been executed successfully.
+
+### Module 3 Result:
+![image](https://github.com/user-attachments/assets/0d8895ee-1895-4679-a39f-da34897636d0)
+
